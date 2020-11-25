@@ -1,0 +1,23 @@
+{
+  "name": "release-cra",
+  "version": "0.1.0",
+  "description": "cli based on create-react-app",
+  "main": "index.js",
+  "bin": {
+    "release-cra": "index.js"
+  },
+  "keywords": [],
+  "author": "Jinxin Hu <hjxenjoy@gmail.com> (https://hujin.xin)",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "enquirer": "^2.3.6",
+    "ora": "^5.1.0",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "release-it": "^14.2.1"
+  }
+}
