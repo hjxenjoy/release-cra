@@ -6,9 +6,7 @@
   "bin": {
     "release-cra": "index.js"
   },
-  "keywords": [],
-  "author": "Jinxin Hu <hjxenjoy@gmail.com> (https://hujin.xin)",
-  "license": "MIT",
+  "keywords": ["release", "create-react-app"],
   "dependencies": {
     "chalk": "^4.1.0",
     "cheerio": "^1.0.0-rc.3",
@@ -19,5 +17,21 @@
   },
   "devDependencies": {
     "release-it": "^14.2.1"
-  }
+  },
+  "github": {
+    "release": true
+  },
+  "scripts": {
+    "release": "release-it"
+  },
+  "author": "Jinxin Hu <hjxenjoy@gmail.com> (https://hujin.xin)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjxenjoy/release-cra.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hjxenjoy/release-cra/issues"
+  },
+  "homepage": "https://github.com/hjxenjoy/release-cra#readme"
 }
