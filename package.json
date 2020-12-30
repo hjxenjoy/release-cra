@@ -1,12 +1,15 @@
 {
   "name": "release-cra",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "cli based on create-react-app",
   "main": "index.js",
   "bin": {
     "release-cra": "index.js"
   },
-  "keywords": ["release", "create-react-app"],
+  "keywords": [
+    "release",
+    "create-react-app"
+  ],
   "dependencies": {
     "chalk": "^4.1.0",
     "cheerio": "^1.0.0-rc.3",
