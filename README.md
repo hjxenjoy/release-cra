@@ -19,27 +19,40 @@ Example
 
 ```json
 {
-  "test": {
-    "publicUrl": "https://your-cdn.domain.com",
-    "upload": "scp -rf ./build/static root@0.0.0.0:/home/assets/",
-    "releaseUrl": "https://your-release-page.domain.com",
-    "extracss": [
-      "https://your-cdn.domain.com/path/extra.css"
-    ],
-    "extrajs": [
-      "https://your-cdn.domain.com/path/extra.js"
-    ]
+  "env": {
+
+    "test": {
+      "publicUrl": "https://your-cdn.domain.com",
+      "upload": "scp -rf ./build/static root@0.0.0.0:/home/assets/",
+      "releaseUrl": "https://your-release-page.domain.com",
+      "css": [
+        "https://your-cdn.domain.com/path/extra.css"
+      ],
+      "js": [
+        "https://your-cdn.domain.com/path/extra.js"
+      ]
+    },
+    "production": {
+      "publicUrl": "https://your-cdn.domain.com",
+      "upload": "scp -rf ./build/static root@0.0.0.0:/home/assets/",
+      "releaseUrl": "https://your-release-page.domain.com",
+      "css": [
+        "https://your-cdn.domain.com/path/extra.css"
+      ],
+      "js": [
+        "https://your-cdn.domain.com/path/extra.js"
+      ]
+    }
   },
-  "production": {
-    "publicUrl": "https://your-cdn.domain.com",
-    "upload": "scp -rf ./build/static root@0.0.0.0:/home/assets/",
-    "releaseUrl": "https://your-release-page.domain.com",
-    "extracss": [
-      "https://your-cdn.domain.com/path/extra.css"
-    ],
-    "extrajs": [
-      "https://your-cdn.domain.com/path/extra.js"
-    ]
+  "entry": {
+    "ModuleA": {
+      "label": "module-a",
+      "subDir": "module-a-static"
+    }
+    "ModuleB": {
+      "label": "module-b",
+      "subDir": "module-b-static"
+    }
   }
 }
 ```

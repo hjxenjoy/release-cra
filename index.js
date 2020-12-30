@@ -46,6 +46,8 @@ function extractAssets(filepath) {
 }
 
 async function bootstrap() {
+  const configs = readReleaseConfig()
+
   const { mode } = await enquirer.prompt({
     type: 'select',
     name: 'mode',
@@ -63,15 +65,28 @@ async function bootstrap() {
     initial: 'start',
   })
 
+  const { entry } = await enquirer.prompt({
+    type: 'select',
+    name: 'entry',
+    message: '选择要启动的模块(Choose Your Entry Module)',
+    choices: Object.entries(configs.entry).map(([key, { label }]) => ({
+      name: key,
+      message: label,
+    })),
+    initial: Object.keys(configs.entry)[0]
+  })
+
+  const { label, subDir = '' } = configs.entry[entry]
+
+  process.env.REACT_APP_ENTRY_FILE = entry
+
   if (mode === 'start') {
-    console.log(chalk.yellowBright('开始启动 Start...'))
+    console.log(chalk.yellowBright(`开始启动(Start) ${label || ''}...`))
     shell.exec('react-scripts start')
     return
   }
 
-  const configs = readReleaseConfig()
-
-  const envs = Object.keys(configs)
+  const envs = Object.keys(configs.env)
 
   let env = envs[0]
 
@@ -79,7 +94,7 @@ async function bootstrap() {
     const result = await enquirer.prompt({
       type: 'select',
       name: 'env',
-      message: '请选择启动的环境(Choose Your Env)',
+      message: '请选择构建的环境(Choose Your Build Env)',
       choices: envs,
       initial: envs[0],
     })
@@ -88,9 +103,9 @@ async function bootstrap() {
 
   process.env.REACT_APP_BUILD_ENV = env
 
-  const config = configs[env]
+  const envConfig = configs.env[env]
 
-  process.env.PUBLIC_URL = config.publicUrl
+  process.env.PUBLIC_URL = envConfig.publicUrl + (subDir ? subDir + '/' : '')
 
   console.log(chalk.yellowBright('🐬开始构建 Start Build...'))
   shell.exec('react-scripts build')
@@ -110,7 +125,7 @@ async function bootstrap() {
   )
   console.log()
   console.log(
-    [...(config.extracss || []), ...css, ...(config.extrajs || []), ...js].join(
+    [...(config.css || []), ...css, ...(config.js || []), ...js].join(
       '\n'
     )
   )
