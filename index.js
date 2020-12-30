@@ -114,7 +114,7 @@ async function bootstrap() {
 
   if (config.upload) {
     console.log(chalk.yellowBright('🚀上传静态资源 Start Upload Static Resource...'))
-    shell.exec(config.upload)
+    shell.exec(config.upload.replace(/#subDir#/g, subDir))
     console.log(chalk.greenBright('🎉上传静态资源成功 Upload Static Resource Success!'))
     console.log()
   }
