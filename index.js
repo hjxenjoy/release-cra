@@ -112,9 +112,9 @@ async function bootstrap() {
   console.log(chalk.greenBright('🎉构建成功 Build Success!'))
   console.log()
 
-  if (config.upload) {
+  if (envConfig.upload) {
     console.log(chalk.yellowBright('🚀上传静态资源 Start Upload Static Resource...'))
-    shell.exec(config.upload.replace(/#subDir#/g, subDir))
+    shell.exec(envConfig.upload.replace(/#subDir#/g, subDir))
     console.log(chalk.greenBright('🎉上传静态资源成功 Upload Static Resource Success!'))
     console.log()
   }
@@ -125,15 +125,15 @@ async function bootstrap() {
   )
   console.log()
   console.log(
-    [...(config.css || []), ...css, ...(config.js || []), ...js].join(
+    [...(envConfig.css || []), ...css, ...(envConfig.js || []), ...js].join(
       '\n'
     )
   )
   console.log()
 
-  if (config.releaseUrl) {
+  if (envConfig.releaseUrl) {
     console.log(
-      chalk.greenBright('🏹前往发布 Goto Release Page', chalk.underline(config.releaseUrl))
+      chalk.greenBright('🏹前往发布 Goto Release Page', chalk.underline(envConfig.releaseUrl))
     )
   }
 }
